@@ -38,23 +38,17 @@ root(none):/# exec /sbin/init 6
 ```
 
 
-** Установить систему с LVM, после чего переименовать VG**
+**Установить систему с LVM, после чего переименовать VG**
+
 Работу выполняю на Centos 7 1804
 
-Вначале посмотрим текущее состояние системы:
-
+```
 [root@localhost ~]# vgs
 
 VG #PV #LV #SN Attr VSize VFree
-
 centos 1 2 0 wz--n- <7.00g 0
 
-Интересует вторая строка с именем centos
-
-Приступим к переименованию:
-
 [root@localhost ~]# vgrename centos OtusRoot
-
 Volume group "centos" successfully renamed to "OtusRoot"
 
 Правим конфигурационные файлы:
@@ -70,19 +64,19 @@ Volume group "centos" successfully renamed to "OtusRoot"
 *** Creating image file done ***
 
 *** Creating initramfs image file '/boot/initramfs-3.10.0-862.el7.x86_64.img' done ***
+```
 
 Перезагружаемся и проверяем успешную загрузку с новым именем:
-
+```
 [root@localhost ~]# vgs
-
 VG #PV #LV #SN Attr VSize VFree
-
 OtusRoot 1 2 0 wz--n- <7.00g 0
+```
 
 **Добавить модуль в initrd**
 
 Скрипты модулей хранятся в каталоге /usr/lib/dracut/modules.d/. Для того чтобы добавить свой модуль создаем там папку с именем 01test:
-
+```
 [root@localhost ~]# mkdir /usr/lib/dracut/modules.d/01test
 
 В нее поместим два скрипта:
@@ -169,3 +163,4 @@ test
 ...
 
 После перезагрузки и после паузы на 10 секунд появился пингвин в выводе терминала.
+```
