@@ -164,4 +164,4 @@ test
 
 После перезагрузки и после паузы на 10 секунд появился пингвин в выводе терминала.
 ```
-[Скриншот с пингвином](https://github.com/hellolightSP/otus_hw7/blob/main/init.xcf)
+![Скриншот с пингвином](https://github.com/hellolightSP/otus_hw7/blob/main/init.xcf)
